@@ -1,0 +1,9 @@
+gsm,title,condition,timepoint_h,replicate,library_layout,read_length,srx,srr,biosample,published_column
+GSM1924778,Wild-type infection 4 h replicate 1,infected,4,1,SINGLE,75,SRX1410960,SRR2936892,SAMN04232086,HeLa-S3:WT:04_h:R1
+GSM1924779,Wild-type infection 4 h replicate 2,infected,4,2,SINGLE,75,SRX1410961,SRR2936893,SAMN04232087,HeLa-S3:WT:04_h:R2
+GSM1924787,Wild-type infection 24 h replicate 1,infected,24,1,SINGLE,75,SRX1410969,SRR2936901,SAMN04232089,HeLa-S3:WT:24_h:R1
+GSM1924788,Wild-type infection 24 h replicate 2,infected,24,2,SINGLE,75,SRX1410970,SRR2936902,SAMN04232090,HeLa-S3:WT:24_h:R2
+GSM1924793,Mock 4 h replicate 1,mock,4,1,SINGLE,75,SRX1410976,SRR2936907,SAMN04232095,HeLa-S3:mock:04_h:R1
+GSM1924794,Mock 4 h replicate 2,mock,4,2,SINGLE,75,SRX1410977,SRR2936908,SAMN04232096,HeLa-S3:mock:04_h:R2
+GSM1924802,Mock 24 h replicate 1,mock,24,1,SINGLE,75,SRX1410985,SRR2936916,SAMN04232104,HeLa-S3:mock:24_h:R1
+GSM1924803,Mock 24 h replicate 2,mock,24,2,SINGLE,75,SRX1410986,SRR2936917,SAMN04232105,HeLa-S3:mock:24_h:R2
