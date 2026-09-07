@@ -80,7 +80,7 @@ featureCounts -T 4 -s 0 \
 # where the paper's headline finding lives -- the small RNA "PinT" is a
 # Salmonella sRNA feature in this GTF, not a CDS.
 # ------------------------------------------------------------------------------
-featureCounts -T 4 -s 0 \
+featureCounts -T 4 -s 0 -t gene \
     -a "${REFDIR}/pathogen_SL1344.gtf" \
     -o "counts/${SRR}_pathogen_counts.txt" \
     "${BAM}"
