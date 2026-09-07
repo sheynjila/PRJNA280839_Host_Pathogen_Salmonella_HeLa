@@ -1,0 +1,32 @@
+# pipeline_config.yaml
+#
+# Declares the real PRJNA280839_Host_Pathogen_Salmonella_HeLa step-by-step pipeline as an
+# ordered list of Slurm jobs. run_pipeline_from_yaml.sh reads this file and
+# submits every step as a real `sbatch` job, chained with Slurm's own
+# --dependency=afterok flag so step N+1 only starts once step N has
+# actually succeeded -- no manual "wait, check, submit the next one"
+# required.
+#
+# Format note: each step is written as a single-line YAML flow mapping
+# (`- {key: value, ...}`) deliberately, so it can be parsed reliably with
+# plain grep/sed on any HPC login node -- no PyYAML/yq dependency needed.
+#
+# mode: sbatch      -- the script has its own real #SBATCH resource
+#                      directives; submitted as-is.
+# mode: sbatch_wrap -- the script's own header documents it as meant for
+#                      LOCAL/interactive use (no #SBATCH directives) --
+#                      wrapped here in a minimal job purely so it can
+#                      participate in the automated dependency chain.
+
+pipeline_name: PRJNA280839_Host_Pathogen_Salmonella_HeLa
+scripts_dir: scripts
+
+steps:
+  - {id: 1, script: 1_Fetch_And_Verify_Raw_Reads.sh, mode: sbatch}
+  - {id: 2, script: 2_Interpret_FastQC_Diagnostics.sh, mode: sbatch}
+  - {id: 3, script: 3_Batch_MultiQC_Summary.sh, mode: sbatch}
+  - {id: 4, script: 4_Evidence_Based_Fastp_Trimming.sh, mode: sbatch}
+  - {id: 5, script: 5_Build_Dual_Reference_And_Align.sh, mode: sbatch}
+  - {id: 6, script: 6_Split_And_Quantify_Host_Pathogen.sh, mode: sbatch}
+  - {id: 7, script: 7_Automated_Pipeline_AllSamples.sh, mode: sbatch}
+  - {id: 8, script: 8_QC_Report_Generator.sh, mode: sbatch_wrap}
