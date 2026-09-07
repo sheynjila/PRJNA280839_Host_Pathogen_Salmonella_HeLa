@@ -117,7 +117,7 @@ for i in "${!SRR_LIST[@]}"; do
         BAM="alignments/${SRR}_Aligned.sortedByCoord.out.bam"
         featureCounts -T 8 -s 0 -a "${REFDIR}/host_GRCh38.gtf" \
             -o "counts/${SRR}_host_counts.txt" "${BAM}" >> "${LOG}" 2>&1
-        featureCounts -T 8 -s 0 -a "${REFDIR}/pathogen_SL1344.gtf" \
+        featureCounts -T 8 -s 0 -t gene -a "${REFDIR}/pathogen_SL1344.gtf" \
             -o "counts/${SRR}_pathogen_counts.txt" "${BAM}" >> "${LOG}" 2>&1
     ); then
         FAILED_SRRS+=("${SRR}")
@@ -149,7 +149,7 @@ done
 
 featureCounts -T 8 -s 0 -a "${REFDIR}/host_GRCh38.gtf" \
     -o "counts/cohort_host_counts.txt" "${HOST_BAMS[@]}"
-featureCounts -T 8 -s 0 -a "${REFDIR}/pathogen_SL1344.gtf" \
+featureCounts -T 8 -s 0 -t gene -a "${REFDIR}/pathogen_SL1344.gtf" \
     -o "counts/cohort_pathogen_counts.txt" "${HOST_BAMS[@]}"
 
 echo "OK: counts/cohort_host_counts.txt and counts/cohort_pathogen_counts.txt written."
